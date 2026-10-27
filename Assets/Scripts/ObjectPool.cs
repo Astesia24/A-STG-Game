@@ -46,9 +46,13 @@ public class ObjectPool
         else
         {
             aimone = Create();
-            if(aimone == null)
+            if(aimone != null)
             {
                 return aimone;
+            }
+            else
+            {
+                return null;
             }
         }
         aimone.transform.position = pos;

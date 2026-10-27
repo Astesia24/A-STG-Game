@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BSpawnPoint : MonoBehaviour
 {
+    //这是最普通的生成点
     public GameObject prefab;
     public float Interval;
     

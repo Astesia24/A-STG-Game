@@ -9,7 +9,7 @@ public class OneAimBullet : Bullet
     {
         base.Awake();
         OriHp = 5;
-        SSpeed = 3f;
+        SSpeed = 8f;
         Sdamage = 20f;
     }
     public override void Start()
@@ -21,13 +21,15 @@ public class OneAimBullet : Bullet
     public override void FixedUpdate()
     {
         base.FixedUpdate();
+        
+
         rb.velocity = StartDir*CurSpeed;
     }
     public override void Spawn()
     {
         base.Spawn();
         
-        
+
     }
     public override void Die()
     {
@@ -37,6 +39,10 @@ public class OneAimBullet : Bullet
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.CompareTag("wall"))
+        {
+            Die();
+        }
         if(collision.CompareTag("Player"))
         {
             Player pp = collision.GetComponent<Player>();

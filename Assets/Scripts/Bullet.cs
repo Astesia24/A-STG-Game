@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     public float SSpeed;
     public float CurSpeed;
-    public float force;
+    
 
     public float OriHp;
     public float CurHp;
@@ -41,14 +41,25 @@ public class Bullet : MonoBehaviour
     }
     public virtual void Spawn()
     {
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f; // 防止子弹疯狂自转
+        }
         CurHp = OriHp;
         CurSpeed = SSpeed;
-        StartDir = -((Vector2)transform.position - (Vector2)Player.Instance.transform.position);
+        StartDir = -((Vector2)transform.position - (Vector2)Player.Instance.transform.position).normalized;
     }
     public virtual void Die()
     {
-        gameObject.SetActive(false);
+        
         ObjectPoolManager.Instance?.ReturnOne(gameObject);
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f; // 防止子弹疯狂自转
+        }
+        gameObject.SetActive(false);
     }
     
 }

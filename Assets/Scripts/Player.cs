@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     StateMachine playermachine;
     public Rigidbody2D rb;
     public Animator animator;
-    //先创建个状态，等会儿改
+    
     
     public NormalState normalState;
     public SlowState slowState;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
          Instance = this;
-
+        
 
 
 
@@ -85,4 +85,5 @@ public class Player : MonoBehaviour
 
 
     }
+    
 }
