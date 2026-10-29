@@ -19,7 +19,7 @@ public class BigState : State
         base.Exit();
     }
     // Update is called once per frame
-    public  override void Update()
+    public  override void FixedUpdate()
     {
         player.rb.velocity = new Vector2(player.direction.x,player.direction.y)*player.speed;
 

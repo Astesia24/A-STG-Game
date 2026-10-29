@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerFollower : Follower
 {
+    
+
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
-        
+        bSpawn = gameObject.GetComponent<BSpawnPoint>();
 
     }
     
@@ -24,5 +26,10 @@ public class PlayerFollower : Follower
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        if (Input.GetKey(KeyCode.Z))
+        {
+            if (bSpawn == null) return;
+            bSpawn.Shoot();
+        }
     }
 }

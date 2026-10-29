@@ -19,18 +19,19 @@ public class SlowState : State
         base.Exit();
     }
     // Update is called once per frame
-    public override void Update()
+    public override void FixedUpdate()
     {
-        if(Input.GetKeyUp(KeyCode.LeftShift))
+        if (!player.wasSNow)
         {
+
             machine.ChangeState(player.normalState);
         }
-        else
-        {
-            player.rb.velocity = new Vector2(player.direction.x, player.direction.y) * player.speed;
-        }
+
+
+        player.rb.velocity = new Vector2(player.direction.x, player.direction.y) * player.speed;
         
         
-        
+
+
     }
 }

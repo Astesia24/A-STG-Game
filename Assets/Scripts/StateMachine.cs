@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class StateMachine
 {
-    Player player;
-    State currentState;
-    public StateMachine(Player player)
-    {
-        this.player = player;
-    }
+    
+    public State currentState;
+    
     public void Initialize(State oriState)
     {
         currentState = oriState;
@@ -30,8 +27,9 @@ public class StateMachine
     }
 
     
-    public void Update()
+    public void FixedUpdate()
     {
-        currentState.Update();
+        currentState.FixedUpdate();
+        
     }
 }

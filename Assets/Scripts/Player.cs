@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -29,12 +30,20 @@ public class Player : MonoBehaviour
     public SlowState slowState;
     public BigState bigState;
 
-
+    //存储输入相关
     public Vector2 playerInput;
     public Vector2 direction;
+    public bool wasSLast = false;
+    public bool wasSNow = false;
     void Awake()
     {
-         Instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         
 
 
@@ -49,7 +58,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("666我动画组件呢，没挂嘛");
         }
-        playermachine = new StateMachine(this);
+        playermachine = new StateMachine();
         
         playerInput = Vector2.zero;
 
@@ -72,15 +81,13 @@ public class Player : MonoBehaviour
     {
         playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         direction = Vector2.ClampMagnitude(playerInput, 1f);
-       
-
-
-
-
-        playermachine.Update();
-     
         
+        wasSNow = Input.GetKey(KeyCode.LeftShift);
 
+        playermachine.FixedUpdate();
+
+        //记录上一帧的状态，供下一帧比对（这一句千万不能漏）
+        wasSLast = wasSNow;
 
 
 

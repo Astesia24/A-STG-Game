@@ -22,10 +22,7 @@ public class PlayerBullet : Bullet
     }
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.CompareTag("Enemy"))
-        {
-            return;
-        }
+        
     }
     public override void Spawn()
     {

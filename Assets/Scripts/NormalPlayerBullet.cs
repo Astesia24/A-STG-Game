@@ -30,6 +30,10 @@ public class NormalPlayerBullet : PlayerBullet
     public override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D (collision);
+        if (collision.CompareTag("wall"))
+        {
+            Die();
+        }
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy == null) return;
         enemy.TakeDamage(Sdamage);

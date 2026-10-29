@@ -15,6 +15,12 @@ public class Follower : MonoBehaviour
     //旋转中心
     protected Transform center;
     protected Rigidbody2D centerRb;
+
+
+
+
+    //射击（射击点）相关参数
+    protected BSpawnPoint bSpawn;
     // Start is called before the first frame update
     protected virtual void Awake()
     {

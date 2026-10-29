@@ -18,6 +18,7 @@ public class State
         {
             Debug.Log("enter时plaer和machine有一个为空！");
         }
+        
     }
     
     public virtual void Exit()
@@ -28,7 +29,7 @@ public class State
     
 
     // Update is called once per frame
-    public virtual void Update()
+    public virtual void FixedUpdate()
     {
         
     }
